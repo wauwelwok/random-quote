@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './style.css';
+
 function Tweetbutton(props) {
     // Add quote to twitter.com/intent/tweet link
     const tweet = `http://twitter.com/intent/tweet?text="${props.quote.text}" -${props.quote.author}&hashtags=quotes`
