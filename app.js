@@ -6,11 +6,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function Tweetbutton() {
-    // Todo -add quote to tweet 
+function Tweetbutton(props) {
+    // Add quote to twitter.com/intent/tweet link
+    var tweet = "http://twitter.com/intent/tweet?text=\"" + props.quote.text + "\" -" + props.quote.author + "&hashtags=quotes";
     return React.createElement(
         "a",
-        { href: "http://twitter.com/intent/tweet", className: "icon", id: "tweet-quote" },
+        { href: tweet, className: "icon", id: "tweet-quote", title: "Tweet this quote!" },
         React.createElement("i", { className: "fab fa-twitter fa-lg" })
     );
 }
@@ -33,7 +34,9 @@ var Quote = function (_React$Component) {
                 React.createElement(
                     "h1",
                     { id: "text", className: "title" },
-                    this.props.quote.text
+                    "\"",
+                    this.props.quote.text,
+                    "\""
                 ),
                 React.createElement(
                     "p",

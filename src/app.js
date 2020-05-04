@@ -1,7 +1,8 @@
-function Tweetbutton() {
-    // Todo -add quote to tweet 
+function Tweetbutton(props) {
+    // Add quote to twitter.com/intent/tweet link
+    const tweet = `http://twitter.com/intent/tweet?text="${props.quote.text}" -${props.quote.author}&hashtags=quotes`
     return (
-        <a href="http://twitter.com/intent/tweet" className="icon" id="tweet-quote"><i className="fab fa-twitter fa-lg"></i></a>
+        <a  href={tweet} className="icon" id="tweet-quote" title="Tweet this quote!"><i className="fab fa-twitter fa-lg"></i></a>
     )
 }
 
@@ -9,7 +10,7 @@ class Quote extends React.Component {
     render() {
         return (
             <div className="quote">
-                <h1 id="text" className="title" >{this.props.quote.text}</h1>
+                <h1 id="text" className="title" >"{this.props.quote.text}"</h1>
                 <p id="author" className="subtitle">{this.props.quote.author}</p>
             </div>
         )
