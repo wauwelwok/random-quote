@@ -25,24 +25,41 @@ class Quotebox extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-        //  quote: [text, author] 
-            quote: randomQuote(),
+            quote: {}
         }
+        //this.componentDidMount = this.componentDidMount.bind(this)
+        //bind this here
     }
 
-    handleClick() {
-        // Set state to new quote, text expects a fetch
-        this.setState({
-            quote: randomQuote()
-        })
+    componentDidMount() {
+        // Set a random quote when component gets loaded for first time
+        this.fetchQuote();
     }
+
+    fetchQuote() {
+        fetch('https://api.quotable.io/random')
+        .then((res) => res.json())
+        .then((data) => {
+             
+            this.setState({
+                quote: {"text": data.content, "author": data.author}
+            })
+        })   
+        .catch(console.log)
+    }
+        
+    handleClick() {
+        this.fetchQuote();
+    }
+
     
     render() {
-        return (
+        console.log(this.state.quote)
+        return (            
             <section className="column is-three-fifths is-offset-one-fifth">
-                <div class="container" id="quote-box">
+                <div className="container" id="quote-box">
                         <Quote quote={this.state.quote} />
-                        <div class="level">
+                        <div className="level">
                             <Tweetbutton quote={this.state.quote}/>
                             <button id="new-quote" href="#" onClick={() => this.handleClick()} className="button">New Quote</button>
                          </div>
@@ -76,5 +93,6 @@ const element = <Quotebox />
 
 ReactDOM.render(
     element,
+    //<FetchQuote />,
     document.getElementById('root')
 );
