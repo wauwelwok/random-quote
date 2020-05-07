@@ -56,10 +56,11 @@ class QuoteBox extends React.Component {
     
     render() {
         return (            
-            <section className="column is-three-fifths is-offset-one-fifth">
+            // <section className="wrapper">
+            <section className="column is-three-fifths is-offset-one-fifth wrapper">
                 <div className="container" id="quote-box">
                     <Quote quote={this.state.quote} colorMod={this.state.colorMod}  />
-                    <div className="level">
+                    <div className="level is-mobile">
                         <TweetButton quote={this.state.quote} />
                         <button id="new-quote" href="#" onClick={this.handleClick} className="button">New Quote</button>   
                     </div>       

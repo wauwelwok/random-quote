@@ -1,15 +1,28 @@
 .container {
-    background-color: hsl(0, 0%, 86%)   
+    background-color: hsl(0, 0%, 86%);
+}
+
+.wrapper {
+    padding: 4em 0;
 }
 
 .quote {
-    margin-top: 5em;
-    height: 250px;
-    padding: 1.5em;
-    background-color: hsl(171, 100%, 41%);
-      
+    min-height: 500px;
+    padding: 4em 1.5em;      
 }
 
 .level {
     padding: 1em 2em;
 }
+
+.subtitle {
+    padding-top: 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .wrapper {padding: 15em 0}
+    .quote {min-height: 100%;}
+    
+}
+
+/* Display  container in flex, row reverse, fixed height, so buttons will be fixed?*/
